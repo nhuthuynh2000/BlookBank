@@ -11,7 +11,7 @@ namespace BloodBankManagement.Controller
 
     internal class BloodController : IController
     {
-        readonly string connectionString = "Data Source=BAONGOC\\DULICH;Initial Catalog=BloodBankManagement;User ID=sa;Password=123456";
+        readonly string connectionString = "server=localhost\\MSSQLSERVER;Initial Catalog=BloodBank;User ID=sa;Password=123456";
         List<IModel> bloods = new List<IModel>();
 
         public List<IModel> Items => bloods;
@@ -28,8 +28,8 @@ namespace BloodBankManagement.Controller
                     {
                         command.Parameters.AddWithValue("@NhomMau", blood.NhomMau);
                         command.Parameters.AddWithValue("@SoLuongMau", blood.SoLuongMau);
-                        
-                      
+
+
 
 
                         int rowsAffected = command.ExecuteNonQuery();
@@ -96,7 +96,7 @@ namespace BloodBankManagement.Controller
                             {
                                 NhomMau = reader.GetString(0),
                                 SoLuongMau = reader.GetInt32(1)
-                             
+
                             };
                             bloods.Add(blood);
                         }
@@ -111,7 +111,7 @@ namespace BloodBankManagement.Controller
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-               
+
                 string query = "SELECT * FROM MauTbl WHERE NhomMau = @NhomMau";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -134,7 +134,7 @@ namespace BloodBankManagement.Controller
             }
             return false;
         }
-        
+
 
         public IModel Read(IModel id)
         {
@@ -153,7 +153,7 @@ namespace BloodBankManagement.Controller
                             {
                                 return new BloodModel
                                 {
-                                   
+
                                     NhomMau = reader.GetString(0),
                                     SoLuongMau = reader.GetInt32(1)
                                 };
@@ -182,24 +182,22 @@ namespace BloodBankManagement.Controller
                     string query = "UPDATE MauTbl SET SoLuongMau = @SoLuongMau WHERE NhomMau = @NhomMau";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        
+
                         command.Parameters.AddWithValue("@NhomMau", blood.NhomMau);
                         command.Parameters.AddWithValue("@SoLuongMau", blood.SoLuongMau);
 
                         int rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected > 0; // Trả về true nếu có dòng được cập nhật
+                        return rowsAffected > 0;
                     }
                 }
             }
             catch (SqlException sqlEx)
             {
-                // Xử lý lỗi SQL cụ thể
                 Console.WriteLine($"SQL Error: {sqlEx.Message}");
                 return false;
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi chung
                 Console.WriteLine($"Error: {ex.Message}");
                 return false;
             }

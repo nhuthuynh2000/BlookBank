@@ -17,7 +17,7 @@ namespace BloodBankManagement.View
     {
         private BloodStockController controller;
         private BloodModel bloodstock;
-        private BindingList<BloodModel> bloodstockList; // Thêm BindingList
+        private BindingList<BloodModel> bloodstockList;
 
         public BloodStockView()
         {
@@ -25,7 +25,7 @@ namespace BloodBankManagement.View
             InitializeComponent();
             controller = new BloodStockController();
             bloodstock = new BloodModel();
-            bloodstockList = new BindingList<BloodModel>(); // Khởi tạo BindingList
+            bloodstockList = new BindingList<BloodModel>();
 
             this.Load += new EventHandler(BloodStockView_Load);
         }
@@ -34,7 +34,7 @@ namespace BloodBankManagement.View
         {
 
             bloodstock.NhomMau = txtgroup.Text.Trim();
-            bloodstock.SoLuongMau = int.Parse(txtstock.Text.Trim()); // Chuyển đổi từ string sang int
+            bloodstock.SoLuongMau = int.Parse(txtstock.Text.Trim());
 
         }
 
@@ -42,19 +42,16 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                // Lấy dòng được chọn
                 DataGridViewRow selectedRow = guna2DataGridView1.SelectedRows[0];
 
-                // Tạo một đối tượng BranchModel từ dữ liệu của dòng đã chọn
                 bloodstock = new BloodModel
                 {
                     NhomMau = selectedRow.Cells["NhomMau"].Value.ToString(),
-                    SoLuongMau = Convert.ToInt32(selectedRow.Cells["SoLuongMau"].Value) // Chuyển đổi sang int
+                    SoLuongMau = Convert.ToInt32(selectedRow.Cells["SoLuongMau"].Value)
                 };
 
-                // Cập nhật dữ liệu vào TextBox
                 txtgroup.SelectedItem = bloodstock.NhomMau;
-                txtstock.Text = bloodstock.SoLuongMau.ToString(); // Chuyển đổi int sang string
+                txtstock.Text = bloodstock.SoLuongMau.ToString();
 
             }
         }
@@ -68,7 +65,7 @@ namespace BloodBankManagement.View
         {
             if (e.RowIndex >= 0)
             {
-                SetDataToText(); // Hiển thị dữ liệu row được chọn
+                SetDataToText();
             }
         }
 
@@ -90,9 +87,8 @@ namespace BloodBankManagement.View
                         SoLuongMau = bloodstock.SoLuongMau
                     }).ToList();
 
-                    guna2DataGridView1.DataSource = BloodStockData; // Gán danh sách mới
+                    guna2DataGridView1.DataSource = BloodStockData;
 
-                    // Đặt tên hiển thị cho các cột
 
                     guna2DataGridView1.Columns["NhomMau"].HeaderText = "Nhóm Máu";
                     guna2DataGridView1.Columns["SoLuongMau"].HeaderText = "Số Lượng Máu";
@@ -113,10 +109,10 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                SetDataToText(); // Cập nhật dữ liệu trong TextBox khi chọn dòng mới
+                SetDataToText();
             }
         }
-        //Search theo ID
+
         public void SearchBloodStockById(string id)
         {
 
@@ -132,14 +128,14 @@ namespace BloodBankManagement.View
 
         public void UpdateDataGridView()
         {
-            bloodstockList.Clear(); // Xóa danh sách hiện tại trước khi thêm mới
+            bloodstockList.Clear();
 
             foreach (var bloodstock in controller.Items.Cast<BloodModel>())
             {
-                bloodstockList.Add(bloodstock); // Thêm mỗi người hiến vào BindingList
+                bloodstockList.Add(bloodstock);
             }
 
-            guna2DataGridView1.DataSource = bloodstockList; // Gán BindingList làm nguồn dữ liệu
+            guna2DataGridView1.DataSource = bloodstockList;
         }
 
 
@@ -152,7 +148,7 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                string id = txtsearch.Text; // Giả sử bạn có một TextBox để nhập ID
+                string id = txtsearch.Text;
                 SearchBloodStockById(id);
             }
         }

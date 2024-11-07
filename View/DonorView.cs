@@ -19,13 +19,13 @@ namespace BloodBankManagement.View
     {
         private DonorController controller;
         private DonorModel donor;
-        private BindingList<DonorModel> donorList; // Thêm BindingList
+        private BindingList<DonorModel> donorList;
         public DonorView()
         {
             InitializeComponent();
             controller = new DonorController();
             donor = new DonorModel();
-            donorList = new BindingList<DonorModel>(); // Khởi tạo BindingList
+            donorList = new BindingList<DonorModel>();
 
             this.Load += new EventHandler(DonorView_Load);
 
@@ -43,13 +43,11 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                // Lấy dòng được chọn
                 DataGridViewRow selectedRow = guna2DataGridView1.SelectedRows[0];
 
-                // Tạo một đối tượng BranchModel từ dữ liệu của dòng đã chọn
                 donor = new DonorModel
                 {
-                    MaNguoiHien = Convert.ToInt32(selectedRow.Cells["MaNguoiHien"].Value), // Chuyển đổi sang int
+                    MaNguoiHien = Convert.ToInt32(selectedRow.Cells["MaNguoiHien"].Value),
                     HoVaTen = selectedRow.Cells["HoVaTen"].Value.ToString(),
                     Tuoi = Convert.ToInt32(selectedRow.Cells["Tuoi"].Value),
                     GioiTinh = selectedRow.Cells["GioiTinh"].Value.ToString(),
@@ -58,11 +56,10 @@ namespace BloodBankManagement.View
                     NhomMau = selectedRow.Cells["NhomMau"].Value.ToString()
                 };
 
-                // Cập nhật dữ liệu vào TextBox
 
-                txtid.Text = donor.MaNguoiHien.ToString(); // Chuyển đổi int sang string
+                txtid.Text = donor.MaNguoiHien.ToString();
                 txtname.Text = donor.HoVaTen;
-                txtage.Text = donor.Tuoi.ToString(); // Chuyển đổi int sang string
+                txtage.Text = donor.Tuoi.ToString();
                 txtgender.SelectedItem = donor.GioiTinh;
                 txtphone.Text = donor.SoDienThoai;
                 txtaddress.Text = donor.DiaChi;
@@ -72,10 +69,10 @@ namespace BloodBankManagement.View
 
         public void GetDataFromText()
         {
-            donor.MaNguoiHien = int.Parse(txtid.Text.Trim()); // Chuyển đổi từ string sang int
+            donor.MaNguoiHien = int.Parse(txtid.Text.Trim());
 
             donor.HoVaTen = txtname.Text.Trim();
-            donor.Tuoi = int.Parse(txtage.Text.Trim()); // Chuyển đổi từ string sang int
+            donor.Tuoi = int.Parse(txtage.Text.Trim());
             donor.GioiTinh = txtgender.Text.Trim();
             donor.SoDienThoai = txtphone.Text.Trim();
             donor.DiaChi = txtaddress.Text.Trim();
@@ -98,9 +95,8 @@ namespace BloodBankManagement.View
                         NhomMau = donor.NhomMau
                     }).ToList();
 
-                    guna2DataGridView1.DataSource = DonorData; // Gán danh sách mới
+                    guna2DataGridView1.DataSource = DonorData;
 
-                    // Đặt tên hiển thị cho các cột
                     guna2DataGridView1.Columns["MaNguoiHien"].HeaderText = "Mã Người Hiến";
                     guna2DataGridView1.Columns["HoVaTen"].HeaderText = "Họ Và Tên";
                     guna2DataGridView1.Columns["Tuoi"].HeaderText = "Tuổi";
@@ -122,7 +118,7 @@ namespace BloodBankManagement.View
         }
 
 
-        //Search theo ID
+
         public void SearchDonorById(string id)
         {
 
@@ -138,14 +134,14 @@ namespace BloodBankManagement.View
 
         public void UpdateDataGridView()
         {
-            donorList.Clear(); // Xóa danh sách hiện tại trước khi thêm mới
+            donorList.Clear();
 
             foreach (var donor in controller.Items.Cast<DonorModel>())
             {
-                donorList.Add(donor); // Thêm mỗi người hiến vào BindingList
+                donorList.Add(donor);
             }
 
-            guna2DataGridView1.DataSource = donorList; // Gán BindingList làm nguồn dữ liệu
+            guna2DataGridView1.DataSource = donorList;
         }
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
@@ -166,7 +162,7 @@ namespace BloodBankManagement.View
             txtphone.Text = string.Empty;
             txtaddress.Text = string.Empty;
             txtgroup.SelectedIndex = -1;
-            txtgroup.Text = string.Empty; // clear text
+            txtgroup.Text = string.Empty;
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -183,7 +179,7 @@ namespace BloodBankManagement.View
         {
             if (e.RowIndex >= 0)
             {
-                SetDataToText(); // Hiển thị dữ liệu row được chọn
+                SetDataToText();
             }
         }
 
@@ -197,7 +193,7 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                string id = txtsearch.Text; // Giả sử bạn có một TextBox để nhập ID
+                string id = txtsearch.Text;
                 SearchDonorById(id);
             }
         }
@@ -211,17 +207,16 @@ namespace BloodBankManagement.View
         {
             GetDataFromText();
 
-            if (donor.IsValidate()) // Ensure you have this validation method implemented in BranchModel
+            if (donor.IsValidate())
             {
                 try
                 {
 
-                    // Gọi hàm Delete với đối tượng 
                     if (controller.Delete(donor))
                     {
                         MessageBox.Show("Người hiến đã được xóa thành công!");
                         ClearForm();
-                        LoadDonors(); // Refresh the list 
+                        LoadDonors();
                     }
                     else
                     {
@@ -252,7 +247,7 @@ namespace BloodBankManagement.View
                     {
                         MessageBox.Show("Người hiến đã được cập nhật thành công!");
                         ClearForm();
-                        LoadDonors(); // Tải lại danh sách sau khi cập nhật
+                        LoadDonors();
                     }
                     else
                     {
@@ -307,7 +302,7 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                SetDataToText(); // Cập nhật dữ liệu trong TextBox khi chọn dòng mới
+                SetDataToText();
             }
         }
 

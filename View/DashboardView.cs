@@ -50,12 +50,12 @@ namespace BloodBankManagement.View
 
         private void DashboardView_Load(object sender, EventArgs e)
         {
-            UpdateCounts(); // Cập nhật số lượng khi form tải
+            UpdateCounts();
         }
 
         private void LoadDatas()
         {
-            donorController.Load(); // Nạp dữ liệu vào danh sách người hiến
+            donorController.Load();
             donorList = new BindingList<DonorModel>(donorController.Items.Cast<DonorModel>().ToList());
 
             bloodTransferController.Load();
@@ -70,8 +70,8 @@ namespace BloodBankManagement.View
 
         private void UpdateCounts()
         {
-            int totalDonors = donorList.Count; // Đếm số lượng người hiến tặng
-            donorlbl.Text = totalDonors.ToString(); // Cập nhật nhãn hiển thị
+            int totalDonors = donorList.Count;
+            donorlbl.Text = totalDonors.ToString();
 
             int totalBloodTransfers = bloodTransferList.Count;
             bloodtransferlbl.Text = totalBloodTransfers.ToString();
@@ -82,13 +82,11 @@ namespace BloodBankManagement.View
             int totalBloods = bloodList.Count;
             total.Text = totalBloods.ToString();
 
-            // Đếm số lượng từng nhóm máu
             UpdateBloodTypeCounts();
         }
 
         private void UpdateBloodTypeCounts()
         {
-            // Tải dữ liệu từ controller nếu chưa được tải
             if (!bloodController.Load())
             {
                 Console.WriteLine("Không thể tải dữ liệu nhóm máu.");
@@ -97,47 +95,42 @@ namespace BloodBankManagement.View
 
             var bloodItems = bloodController.Items.OfType<BloodModel>().ToList();
 
-            // Lấy số lượng cho từng nhóm máu
             int oPlusQuantity = bloodItems.FirstOrDefault(b => b.NhomMau == "O+")?.SoLuongMau ?? 0;
             int oMinusQuantity = bloodItems.FirstOrDefault(b => b.NhomMau == "O-")?.SoLuongMau ?? 0;
             int abPlusQuantity = bloodItems.FirstOrDefault(b => b.NhomMau == "AB+")?.SoLuongMau ?? 0;
             int abMinusQuantity = bloodItems.FirstOrDefault(b => b.NhomMau == "AB-")?.SoLuongMau ?? 0;
 
-            // Tính tổng số lượng máu
             int totalBloodQuantity = bloodItems.Sum(b => b.SoLuongMau);
 
-            // Tính phần trăm cho từng nhóm
             double oPlusPercentage = totalBloodQuantity > 0 ? (double)oPlusQuantity / totalBloodQuantity * 100 : 0;
             double oMinusPercentage = totalBloodQuantity > 0 ? (double)oMinusQuantity / totalBloodQuantity * 100 : 0;
             double abPlusPercentage = totalBloodQuantity > 0 ? (double)abPlusQuantity / totalBloodQuantity * 100 : 0;
             double abMinusPercentage = totalBloodQuantity > 0 ? (double)abMinusQuantity / totalBloodQuantity * 100 : 0;
 
-            // Giới hạn giá trị của thanh tiến trình
             OPlusProgress.Value = Math.Min((int)oPlusPercentage, 100);
-            OMinusProgres.Value = Math.Min((int)oMinusPercentage, 100); // Giả sử bạn có OMinusProgress
-            ABPlusProgress.Value = Math.Min((int)abPlusPercentage, 100); // Giả sử bạn có ABPlusProgress
-            ABMinusProgress.Value = Math.Min((int)abMinusPercentage, 100); // Giả sử bạn có ABMinusProgress
+            OMinusProgres.Value = Math.Min((int)oMinusPercentage, 100);
+            ABPlusProgress.Value = Math.Min((int)abPlusPercentage, 100);
+            ABMinusProgress.Value = Math.Min((int)abMinusPercentage, 100);
 
-            // Cập nhật nhãn hiển thị số lượng cho từng nhóm
             OPlusNumlbl.Text = oPlusQuantity.ToString();
-            Ominus.Text = oMinusQuantity.ToString(); // Giả sử bạn có OminusNumlbl
+            Ominus.Text = oMinusQuantity.ToString();
             ABPlusNumlbl.Text = abPlusQuantity.ToString();
-            ABminus.Text = abMinusQuantity.ToString(); // Giả sử bạn có ABminusNumlbl
+            ABminus.Text = abMinusQuantity.ToString();
         }
 
         private void OPlusNumlbl_Click(object sender, EventArgs e)
         {
-            // Xử lý sự kiện click nếu cần
+            // 
         }
 
         private void Ominus_Click(object sender, EventArgs e)
         {
-            // Xử lý sự kiện click nếu cần
+            // 
         }
 
         private void OPlusProgress_ValueChanged(object sender, EventArgs e)
         {
-            // Xử lý sự kiện value changed nếu cần
+            // 
         }
     }
 }

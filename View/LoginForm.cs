@@ -24,7 +24,7 @@ namespace BloodBankManagement.View
 
         }
 
-        
+
 
         private void btn_login_Click(object sender, EventArgs e)
         {
@@ -37,9 +37,8 @@ namespace BloodBankManagement.View
                 mainForm.isLoggedIn = true;
                 mainForm.role = controller.GetRole(txt_email.Text, txt_pass.Text);
 
-                // Hiện MainForm và ẩn LoginForm
                 mainForm.Show();
-                this.Hide(); // hoặc this.Close();
+                this.Hide();
             }
             else
             {
@@ -57,11 +56,9 @@ namespace BloodBankManagement.View
         }
         private void UpdateLoginButtonState()
         {
-            // Kiểm tra xem cả hai ô nhập liệu đều có dữ liệu
             bool isUsernameFilled = !string.IsNullOrWhiteSpace(txt_email.Text);
             bool isPasswordFilled = !string.IsNullOrWhiteSpace(txt_pass.Text);
 
-            // Cập nhật trạng thái nút "Login"
             btn_login.Enabled = isUsernameFilled && isPasswordFilled;
         }
 

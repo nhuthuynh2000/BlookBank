@@ -7,7 +7,7 @@ namespace BloodBankManagement.Controller
 {
     internal class DonorController : IController
     {
-        private readonly string connectionString = "server=BAONGOC\\DULICH;Initial Catalog=BloodBankManagement;User ID=sa;Password=123456";
+        private readonly string connectionString = "server=localhost\\MSSQLSERVER;Initial Catalog=BloodBank;User ID=sa;Password=123456";
         private List<IModel> donors = new List<IModel>();
 
         public List<IModel> Items => donors;

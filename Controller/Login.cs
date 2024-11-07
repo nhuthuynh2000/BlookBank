@@ -9,7 +9,7 @@ namespace BloodBankManagement.Controller
 {
     internal class Login
     {
-        private string connectionString = "Data Source=BAONGOC\\DULICH;Initial Catalog=BloodBankManagement;User ID=sa;Password=123456";
+        private string connectionString = "server=localhost\\MSSQLSERVER;Initial Catalog=BloodBank;User ID=sa;Password=123456";
         public bool LoginController(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -19,10 +19,10 @@ namespace BloodBankManagement.Controller
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@username", username);
-                    command.Parameters.AddWithValue("@password", password); 
+                    command.Parameters.AddWithValue("@password", password);
 
                     int result = (int)command.ExecuteScalar();
-                    return result > 0; // Trả về true nếu có ít nhất 1 bản ghi khớp
+                    return result > 0;
                 }
             }
         }

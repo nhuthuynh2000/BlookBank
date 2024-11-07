@@ -20,13 +20,13 @@ namespace BloodBankManagement.View
     {
         private PatientController controller;
         private PatientModel patient;
-        private BindingList<PatientModel> patientList; // Thêm BindingList
+        private BindingList<PatientModel> patientList;
         public PatientView()
         {
             InitializeComponent();
             controller = new PatientController();
             patient = new PatientModel();
-            patientList = new BindingList<PatientModel>(); // Khởi tạo BindingList
+            patientList = new BindingList<PatientModel>();
 
             this.Load += new EventHandler(PatientView_Load);
 
@@ -35,9 +35,9 @@ namespace BloodBankManagement.View
         public void GetDataFromText()
         {
 
-            patient.MaBenhNhan = int.Parse(txtid.Text.Trim()); // Chuyển đổi từ string sang int
+            patient.MaBenhNhan = int.Parse(txtid.Text.Trim());
             patient.HoVaTen = txtname.Text.Trim();
-            patient.Tuoi = int.Parse(txtage.Text.Trim()); // Chuyển đổi từ string sang int
+            patient.Tuoi = int.Parse(txtage.Text.Trim());
             patient.GioiTinh = txtgender.Text.Trim();
             patient.SoDienThoai = txtphone.Text.Trim();
             patient.NhomMau = txtgroup.Text.Trim();
@@ -49,12 +49,11 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                // Lấy dòng được chọn
                 DataGridViewRow selectedRow = guna2DataGridView1.SelectedRows[0];
 
                 patient = new PatientModel
                 {
-                    MaBenhNhan = Convert.ToInt32(selectedRow.Cells["MaBenhNhan"].Value), // Chuyển đổi sang int
+                    MaBenhNhan = Convert.ToInt32(selectedRow.Cells["MaBenhNhan"].Value),
                     HoVaTen = selectedRow.Cells["HoVaTen"].Value.ToString(),
                     Tuoi = Convert.ToInt32(selectedRow.Cells["Tuoi"].Value),
                     GioiTinh = selectedRow.Cells["GioiTinh"].Value.ToString(),
@@ -64,11 +63,10 @@ namespace BloodBankManagement.View
                     BenhVien = selectedRow.Cells["BenhVien"].Value.ToString()
                 };
 
-                // Cập nhật dữ liệu vào TextBox
 
-                txtid.Text = patient.MaBenhNhan.ToString(); // Chuyển đổi int sang string
+                txtid.Text = patient.MaBenhNhan.ToString();
                 txtname.Text = patient.HoVaTen;
-                txtage.Text = patient.Tuoi.ToString(); // Chuyển đổi int sang string
+                txtage.Text = patient.Tuoi.ToString();
                 txtgender.SelectedItem = patient.GioiTinh;
                 txtphone.Text = patient.SoDienThoai;
                 txtgroup.SelectedItem = patient.NhomMau;
@@ -106,9 +104,8 @@ namespace BloodBankManagement.View
                         BenhVien = patient.BenhVien
                     }).ToList();
 
-                    guna2DataGridView1.DataSource = PatientData; // Gán danh sách mới
+                    guna2DataGridView1.DataSource = PatientData;
 
-                    // Đặt tên hiển thị cho các cột
                     guna2DataGridView1.Columns["MaBenhNhan"].HeaderText = "Mã Bệnh Nhân";
                     guna2DataGridView1.Columns["HoVaTen"].HeaderText = "Họ Và Tên";
                     guna2DataGridView1.Columns["Tuoi"].HeaderText = "Tuổi";
@@ -136,7 +133,7 @@ namespace BloodBankManagement.View
         {
             if (e.RowIndex >= 0)
             {
-                SetDataToText(); // Hiển thị dữ liệu row được chọn
+                SetDataToText();
             }
         }
 
@@ -146,10 +143,9 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                SetDataToText(); // Cập nhật dữ liệu trong TextBox khi chọn dòng mới
+                SetDataToText();
             }
         }
-        //Search theo ID
         public void SearchPatientById(string id)
         {
 
@@ -169,10 +165,10 @@ namespace BloodBankManagement.View
 
             foreach (var patient in controller.Items.Cast<PatientModel>())
             {
-                patientList.Add(patient); // Thêm mỗi người hiến vào BindingList
+                patientList.Add(patient);
             }
 
-            guna2DataGridView1.DataSource = patientList; // Gán BindingList làm nguồn dữ liệu
+            guna2DataGridView1.DataSource = patientList;
         }
 
 
@@ -181,12 +177,12 @@ namespace BloodBankManagement.View
             txtid.Text = string.Empty;
             txtname.Text = string.Empty;
             txtage.Text = string.Empty;
-            txtgender.SelectedIndex = -1; // set selected index to -1 to clear selection
+            txtgender.SelectedIndex = -1;
             txtgender.Text = string.Empty;
             txtphone.Text = string.Empty;
             txtaddress.Text = string.Empty;
-            txtgroup.SelectedIndex = -1; // set selected index to -1 to clear selection
-            txtgroup.Text = string.Empty; // clear text
+            txtgroup.SelectedIndex = -1;
+            txtgroup.Text = string.Empty;
             txthopital.Text = string.Empty;
         }
 
@@ -224,7 +220,7 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                string id = txtsearch.Text; // Giả sử bạn có một TextBox để nhập ID
+                string id = txtsearch.Text;
                 SearchPatientById(id);
             }
         }
@@ -243,7 +239,6 @@ namespace BloodBankManagement.View
                 try
                 {
 
-                    // Gọi hàm Delete với đối tượng 
                     if (controller.Delete(patient))
                     {
                         MessageBox.Show("Bệnh nhân đã được xóa thành công!");
@@ -306,7 +301,6 @@ namespace BloodBankManagement.View
             {
                 try
                 {
-                    // Create a new branch
                     if (controller.Create(patient))
                     {
                         MessageBox.Show("Bệnh nhân đã được thêm thành công!");

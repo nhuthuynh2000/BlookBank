@@ -24,14 +24,13 @@ namespace BloodBankManagement.View
             InitializeComponent();
             controller = new EmployeeController();
             employee = new EmployeeModel();
-            employeeList = new BindingList<EmployeeModel>(); // Khởi tạo BindingList
-                                                             // Gán sự kiện Load
+            employeeList = new BindingList<EmployeeModel>();
             this.Load += new EventHandler(Employee_Load);
         }
 
         public void GetDataFromText()
         {
-            employee.MaNhanVien = int.Parse(txtid.Text.Trim()); // Chuyển đổi từ string sang int
+            employee.MaNhanVien = int.Parse(txtid.Text.Trim());
 
             employee.TenDangNhap = txtuser.Text.Trim();
             employee.MatKhau = txtpassword.Text.Trim();
@@ -42,19 +41,16 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                // Lấy dòng được chọn
                 DataGridViewRow selectedRow = guna2DataGridView1.SelectedRows[0];
 
-                // Tạo một đối tượng BranchModel từ dữ liệu của dòng đã chọn
                 employee = new EmployeeModel
                 {
-                    MaNhanVien = Convert.ToInt32(selectedRow.Cells["MaNhanVien"].Value), // Chuyển đổi sang int
+                    MaNhanVien = Convert.ToInt32(selectedRow.Cells["MaNhanVien"].Value),
                     TenDangNhap = selectedRow.Cells["TenDangNhap"].Value.ToString(),
                     MatKhau = selectedRow.Cells["MatKhau"].Value.ToString(),
                     Role = selectedRow.Cells["Role"].Value.ToString()
                 };
 
-                // Cập nhật dữ liệu vào TextBox
                 txtid.Text = employee.MaNhanVien.ToString();
                 txtuser.Text = employee.TenDangNhap;
                 txtpassword.Text = employee.MatKhau;
@@ -73,7 +69,6 @@ namespace BloodBankManagement.View
             LoadEmployees();
             ClearForm();
         }
-        //Search theo ID
         public void SearchEmployeeById(string id)
         {
 
@@ -88,17 +83,16 @@ namespace BloodBankManagement.View
         }
         public void UpdateDataGridView()
         {
-            employeeList.Clear(); // Xóa danh sách hiện tại trước khi thêm mới
+            employeeList.Clear();
 
             foreach (var employee in controller.Items.Cast<EmployeeModel>())
             {
-                employeeList.Add(employee); // Thêm mỗi người hiến vào BindingList
+                employeeList.Add(employee);
             }
 
-            guna2DataGridView1.DataSource = employeeList; // Gán BindingList làm nguồn dữ liệu
+            guna2DataGridView1.DataSource = employeeList;
         }
 
-        //lấy tất cả các chi nhánh từ cơ sở dữ liệu để hiển thị trong giao diện người dùng
         private void LoadEmployees()
         {
             try
@@ -114,9 +108,8 @@ namespace BloodBankManagement.View
 
                     }).ToList();
 
-                    guna2DataGridView1.DataSource = employeeData; // Gán danh sách mới
+                    guna2DataGridView1.DataSource = employeeData;
 
-                    // Đặt tên hiển thị cho các cột
                     guna2DataGridView1.Columns["MaNhanVien"].HeaderText = "Mã Nhân Viên";
                     guna2DataGridView1.Columns["TenDangNhap"].HeaderText = "Tên Đăng Nhập";
                     guna2DataGridView1.Columns["MatKhau"].HeaderText = "Mật khẩu";
@@ -138,18 +131,18 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                string id = txtsearch.Text; // Giả sử bạn có một TextBox để nhập ID
+                string id = txtsearch.Text;
                 SearchEmployeeById(id);
             }
         }
 
-        
+
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                SetDataToText(); // Hiển thị dữ liệu row được chọn
+                SetDataToText();
             }
         }
 
@@ -157,7 +150,7 @@ namespace BloodBankManagement.View
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
             {
-                SetDataToText(); // Cập nhật dữ liệu trong TextBox khi chọn dòng mới
+                SetDataToText();
             }
         }
 
@@ -183,7 +176,7 @@ namespace BloodBankManagement.View
                     {
                         MessageBox.Show("Nhân viên đã được cập nhật thành công!");
                         ClearForm();
-                        LoadEmployees(); // Tải lại danh sách sau khi cập nhật
+                        LoadEmployees();
                     }
                     else
                     {
@@ -206,17 +199,16 @@ namespace BloodBankManagement.View
         {
             GetDataFromText();
 
-            if (employee.IsValidate()) // Ensure you have this validation method implemented in BranchModel
+            if (employee.IsValidate())
             {
                 try
                 {
 
-                    // Gọi hàm Delete với đối tượng BranchModel
                     if (controller.Delete(employee))
                     {
                         MessageBox.Show("Nhân viên đã được xóa thành công!");
                         ClearForm();
-                        LoadEmployees(); // Refresh the list of branches
+                        LoadEmployees();
                     }
                     else
                     {
@@ -237,18 +229,18 @@ namespace BloodBankManagement.View
 
         private void btncreate_Click_1(object sender, EventArgs e)
         {
-            GetDataFromText(); 
-                               
+            GetDataFromText();
+
             if (employee.IsValidate())
             {
                 try
                 {
-                    
+
                     if (controller.Create(employee))
                     {
                         MessageBox.Show("Nhân viên đã được thêm thành công!");
                         ClearForm();
-                        LoadEmployees(); 
+                        LoadEmployees();
                     }
                     else
                     {
@@ -271,9 +263,9 @@ namespace BloodBankManagement.View
             txtid.Text = string.Empty;
             txtuser.Text = string.Empty;
             txtpassword.Text = string.Empty;
-            txtrole.SelectedIndex = -1; // set selected index to -1 to clear selection
+            txtrole.SelectedIndex = -1;
             txtrole.Text = string.Empty;
-           
+
         }
     }
 }

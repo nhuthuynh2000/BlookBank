@@ -11,7 +11,7 @@ namespace BloodBankManagement.Controller
 {
     internal class EmployeeController : IController
     {
-        readonly string connectionString = "Data Source=BAONGOC\\DULICH;Initial Catalog=BloodBankManagement;User ID=sa;Password=123456";
+        readonly string connectionString = "server=localhost\\MSSQLSERVER;Initial Catalog=BloodBank;User ID=sa;Password=123456";
         List<IModel> employees = new List<IModel>();
 
         public List<IModel> Items => employees;
@@ -30,7 +30,7 @@ namespace BloodBankManagement.Controller
                         command.Parameters.AddWithValue("@TenDangNhap", employee.TenDangNhap);
                         command.Parameters.AddWithValue("@MatKhau", employee.MatKhau);
                         command.Parameters.AddWithValue("@Role", employee.Role);
-                    
+
 
 
                         int rowsAffected = command.ExecuteNonQuery();
@@ -120,7 +120,7 @@ namespace BloodBankManagement.Controller
                     {
                         if (reader.Read())
                         {
-                            EmployeeModel employee = new  EmployeeModel
+                            EmployeeModel employee = new EmployeeModel
                             {
                                 MaNhanVien = reader.GetInt32(0),
                                 TenDangNhap = reader.GetString(1),

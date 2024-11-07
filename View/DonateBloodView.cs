@@ -18,21 +18,21 @@ namespace BloodBankManagement.View
     public partial class DonateBloodView : Form, IView
     {
         private BloodController bloodController;
-        private DonorController donorController; // Tạo controller cho người hiến
+        private DonorController donorController;
         private BloodModel blood;
         private BindingList<BloodModel> bloodList;
-        private BindingList<DonorModel> donorList; // BindingList cho người hiến
+        private BindingList<DonorModel> donorList;
 
         string searchBlood;
         public DonateBloodView()
         {
             InitializeComponent();
             bloodController = new BloodController();
-            donorController = new DonorController(); // Khởi tạo controller cho người hiến
+            donorController = new DonorController();
             blood = new BloodModel();
             bloodList = new BindingList<BloodModel>();
             LoadBloods();
-            donorList = new BindingList<DonorModel>(); // Khởi tạo BindingList cho người hiến
+            donorList = new BindingList<DonorModel>();
             LoadDonors();
             UpdateDataGridView();
 
@@ -42,13 +42,12 @@ namespace BloodBankManagement.View
         {
 
         }
-        //update
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             searchBlood = GetBlood();
             foreach (BloodModel model in bloodList)
             {
-                if(model.NhomMau == searchBlood)
+                if (model.NhomMau == searchBlood)
                 {
                     model.SoLuongMau++;
                     bloodController.Update(model);
@@ -79,7 +78,6 @@ namespace BloodBankManagement.View
         {
 
         }
-        // hiển thị bảng 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (guna2DataGridView1.SelectedRows.Count > 0)
@@ -88,12 +86,11 @@ namespace BloodBankManagement.View
                 UpdateDataGridView();
             }
         }
-        // hiển thị bảng donor
         private void guna2DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                SetDataToText(); // Hiển thị dữ liệu row được chọn
+                SetDataToText();
             }
         }
 
@@ -102,7 +99,7 @@ namespace BloodBankManagement.View
 
         }
 
-       
+
 
 
         private void label2_Click(object sender, EventArgs e)
@@ -112,20 +109,18 @@ namespace BloodBankManagement.View
 
         public void SetDataToText()
         {
-          
-           
+
+
         }
         public void SetDonor()
         {
-             if (guna2DataGridView2.SelectedRows.Count > 0)
+            if (guna2DataGridView2.SelectedRows.Count > 0)
             {
-                // Lấy dòng được chọn trong guna2DataGridView2
                 DataGridViewRow selectedRow2 = guna2DataGridView2.SelectedRows[0];
 
-                // Tạo một đối tượng DonorModel từ dữ liệu của dòng đã chọn
                 var donor = new DonorModel
                 {
-                    MaNguoiHien = Convert.ToInt32(selectedRow2.Cells["MaNguoiHien"].Value), // Chuyển đổi sang int
+                    MaNguoiHien = Convert.ToInt32(selectedRow2.Cells["MaNguoiHien"].Value),
                     HoVaTen = selectedRow2.Cells["HoVaTen"].Value.ToString(),
                     Tuoi = Convert.ToInt32(selectedRow2.Cells["Tuoi"].Value),
                     GioiTinh = selectedRow2.Cells["GioiTinh"].Value.ToString(),
@@ -134,15 +129,14 @@ namespace BloodBankManagement.View
                     NhomMau = selectedRow2.Cells["dataGridViewTextBoxColumn2"].Value.ToString()
                 };
 
-                // Cập nhật dữ liệu vào TextBox
 
                 txtname.Text = donor.HoVaTen;
                 txtgroup.SelectedItem = donor.NhomMau;
             }
         }
 
-        
-        
+
+
 
         private void LoadDonors()
         {
@@ -196,7 +190,6 @@ namespace BloodBankManagement.View
 
                     guna2DataGridView1.DataSource = BloodData;
 
-                    // Đặt tên hiển thị cho các cột
                     guna2DataGridView1.Columns["NhomMau"].HeaderText = "Nhóm Máu";
                     guna2DataGridView1.Columns["SoLuongMau"].HeaderText = "Số Lượng Máu";
                 }
@@ -213,20 +206,19 @@ namespace BloodBankManagement.View
 
         private void guna2DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            
+
         }
         public void UpdateDataGridView()
         {
-            bloodList.Clear(); // Xóa danh sách hiện tại trước khi thêm mới
+            bloodList.Clear();
 
             foreach (var blood in bloodController.Items.Cast<BloodModel>())
             {
-                bloodList.Add(blood); // Thêm mỗi người hiến vào BindingList
+                bloodList.Add(blood);
             }
 
-            guna2DataGridView1.DataSource = bloodList; // Gán BindingList làm nguồn dữ liệu
+            guna2DataGridView1.DataSource = bloodList;
         }
-        //donor
         private void guna2DataGridView2_SelectionChanged(object sender, EventArgs e)
         {
             if (guna2DataGridView2.SelectedRows.Count > 0)

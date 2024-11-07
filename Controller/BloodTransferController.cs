@@ -11,7 +11,7 @@ namespace BloodBankManagement.Controller
 {
     internal class BloodTransferController : IController
     {
-        readonly string connectionString = "Data Source=BAONGOC\\DULICH;Initial Catalog=BloodBankManagement;User ID=sa;Password=123456";
+        readonly string connectionString = "server=localhost\\MSSQLSERVER;Initial Catalog=BloodBank;User ID=sa;Password=123456";
         List<IModel> bloodtransfers = new List<IModel>();
 
         public List<IModel> Items => bloodtransfers;
@@ -29,11 +29,6 @@ namespace BloodBankManagement.Controller
                         command.Parameters.AddWithValue("@MaChuyenGiao", bloodtransfer.MaChuyenGiao);
                         command.Parameters.AddWithValue("@HoVaTenNguoiNhan", bloodtransfer.HoVaTenNguoiNhan);
                         command.Parameters.AddWithValue("@NhomMau", bloodtransfer.NhomMau);
-                       
-
-
-
-
                         int rowsAffected = command.ExecuteNonQuery();
                         return rowsAffected > 0;
                     }
@@ -192,19 +187,17 @@ namespace BloodBankManagement.Controller
                         command.Parameters.AddWithValue("@NhomMau", bloodtransfer.NhomMau);
 
                         int rowsAffected = command.ExecuteNonQuery();
-                        return rowsAffected > 0; // Trả về true nếu có dòng được cập nhật
+                        return rowsAffected > 0;
                     }
                 }
             }
             catch (SqlException sqlEx)
             {
-                // Xử lý lỗi SQL cụ thể
                 Console.WriteLine($"SQL Error: {sqlEx.Message}");
                 return false;
             }
             catch (Exception ex)
             {
-                // Xử lý lỗi chung
                 Console.WriteLine($"Error: {ex.Message}");
                 return false;
             }
