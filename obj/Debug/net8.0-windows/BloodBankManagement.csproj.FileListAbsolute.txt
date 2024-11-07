@@ -36,3 +36,42 @@ D:\Dot Net\BloodBankManagement\obj\Debug\net8.0-windows\BloodBankManagement.View
 D:\Dot Net\BloodBankManagement\obj\Debug\net8.0-windows\BloodBankManagement.View.LoginForm.resources
 D:\Dot Net\BloodBankManagement\obj\Debug\net8.0-windows\BloodBankManagement.View.Splash.resources
 D:\Dot Net\BloodBankManagement\obj\Debug\net8.0-windows\BloodBankManagement.View.Test.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\BloodBankManagement.exe
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\BloodBankManagement.deps.json
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\BloodBankManagement.runtimeconfig.json
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\BloodBankManagement.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\BloodBankManagement.pdb
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\Guna.UI2.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\System.Management.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\bin\Debug\net8.0-windows\runtimes\win\lib\net7.0\System.Management.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.csproj.AssemblyReference.cache
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.MainForm.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.Properties.Resources.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.BloodStockView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.BloodTransferView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.DashboardView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.DonateBloodView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.DonorView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.EmployeeView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.LoginForm.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.PatientView.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.Splash.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.View.Test.resources
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.csproj.GenerateResource.cache
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.AssemblyInfoInputs.cache
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.AssemblyInfo.cs
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.csproj.CoreCompileInputs.cache
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.sourcelink.json
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBan.5209C807.Up2Date
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\refint\BloodBankManagement.dll
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.pdb
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\BloodBankManagement.genruntimeconfig.cache
+c:\Users\ADMIN\Desktop\CV\BlookBank\obj\Debug\net8.0-windows\ref\BloodBankManagement.dll
