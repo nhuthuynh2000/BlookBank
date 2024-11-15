@@ -610,11 +610,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\BloodBankManagement.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\BloodBankManagement.csproj",
       "projectName": "BloodBankManagement",
-      "projectPath": "C:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\BloodBankManagement.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\BloodBankManagement.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages"

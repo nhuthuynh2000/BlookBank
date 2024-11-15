@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\BloodBankManagement.csproj": {}
+    "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\BloodBankManagement.csproj": {}
   },
   "projects": {
-    "c:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\BloodBankManagement.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\BloodBankManagement.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\BloodBankManagement.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\BloodBankManagement.csproj",
         "projectName": "BloodBankManagement",
-        "projectPath": "c:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\BloodBankManagement.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\BloodBankManagement.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\ADMIN\\Desktop\\CV\\BlookBank\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\Project\\BlookBank\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "F:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
